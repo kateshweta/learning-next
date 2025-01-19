@@ -6,7 +6,9 @@
   - [Chapter 1: Getting Started!](#chapter-1-getting-started)
   - [Chapter 2: CSS Styling!](#chapter-2-css-styling)
   - [Chapter 3: Optimizing Fonts and Images!](#chapter-3-optimizing-fonts-and-images)
-  - 
+  - [Chapter 4: Creating Layouts and Pages!](#chapter-4-creating-layouts-and-pages)
+  - [Chapter 5: Navigating Between Pages!](#chapter-5-navigating-between-pages)
+
 
 ---
 
@@ -108,3 +110,31 @@ function MyImage() {
 - **Implementation**: By default, the `next/image` component enables lazy loading.
 
 ---
+
+## Chapter 4: Creating Layouts and Pages
+
+### Nested Routing
+Next.js uses file-system routing where folders represent route segments that map to URL segments. Nested routes are created by nesting folders and adding `page.tsx` files inside them.
+
+- **Page Component**: `page.tsx` exports a React component, making the route accessible.
+- **File Structure**: The `/app` directory contains the route structure. For example, `/app/dashboard/page.tsx` corresponds to the `/dashboard` route.
+
+### Dashboard Pages
+- **Creating Routes**: New routes can be added by creating folders inside `/app` and adding `page.tsx` files.
+- **Example**:
+  - `/dashboard/page.tsx`: Accessible at `/dashboard`.
+  - `/dashboard/customers/page.tsx`: Accessible at `/dashboard/customers`.
+  - `/dashboard/invoices/page.tsx`: Accessible at `/dashboard/invoices`.
+
+### Creating Shared Layouts
+Dashboards often share a common layout, such as navigation bars. In Next.js, you can use a `layout.tsx` file to define a shared layout for multiple pages.
+
+- **Layout Component**: The `layout.tsx` file defines the structure shared by its child pages.
+- **Children Prop**: Pages inside the same folder are automatically nested within the layout.
+
+### Root Layout
+The `layout.tsx` file in `/app` is the root layout of the application and is required in every Next.js app. It defines global structures like `<html>` and `<body>` tags and includes global styles and metadata.
+
+### Benefits of Layouts
+- **Partial Rendering**: Layout components don’t re-render when navigating between child pages, preserving React state.
+- **Code Colocation**: UI components, tests, and other files can be colocated with their routes, keeping the project organized.
